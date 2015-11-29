@@ -1,0 +1,22 @@
+{
+  "name": "moreui",
+  "version": "1.0.0",
+  "description": "moreui",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhuhuijun/20151129angularmoreview.git"
+  },
+  "keywords": [
+    "uis"
+  ],
+  "author": "zhuhj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zhuhuijun/20151129angularmoreview/issues"
+  },
+  "homepage": "https://github.com/zhuhuijun/20151129angularmoreview#readme"
+}
