@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="uiRouterSample">
+<head>
+    <title>myuirouter</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="../lib/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="../lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" ui-sref="home">ui-router</a>
+            <ul class="nav">
+                <li ng-class="{active: $state.includes('contacts')}"><a ui-sref="contacts.list">Contacts</a></li>
+                <li ui-sref-active="active"><a ui-sref="about">About</a></li>
+            </ul>
+            <p ui-view="hint" class="navbar-text pull-right"></p>
+        </div>
+    </div>
+</div>
+
+<!-- Here is the main ui-view (unnamed) and will be populated by its immediate children's templates
+     unless otherwise explicitly named views are targeted. It's also employing ng-animate. -->
+<div ui-view class="container slide" style="padding-top: 80px;"></div>
+
+
+<hr>
+    <pre>
+      <!-- Here's some values to keep an eye on in the sample in order to understand $state and $stateParams -->
+      $state = {{$state.current.name}}
+      $stateParams = {{$stateParams}}
+      $state full url = {{ $state.$current.url.source }}
+      <!-- $state.$current is not a public api, we are using it to
+           display the full url for learning purposes-->
+    </pre>
+</body>
+</html>
