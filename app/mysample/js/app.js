@@ -7,7 +7,7 @@ var app = angular.module('uiRouterSample', [
     'ngAnimate'
 ]);
 //run
-app..run(['$rootScope', '$state', '$stateParams',
+app.run(['$rootScope', '$state', '$stateParams',
     function ($rootScope, $state, $stateParams) {
         // It's very handy to add references to $state and $stateParams to the $rootScope
         // so that you can access them from any scope within your applications.For example,
@@ -18,11 +18,9 @@ app..run(['$rootScope', '$state', '$stateParams',
     }]);
 app.config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
-
         /////////////////////////////
         // Redirects and Otherwise //
         /////////////////////////////
-
         // Use $urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
         $urlRouterProvider
 
@@ -33,8 +31,6 @@ app.config(['$stateProvider', '$urlRouterProvider',
 
             // If the url is ever invalid, e.g. '/asdf', then redirect to '/' aka the home state
             .otherwise('/');
-
-
         //////////////////////////
         // State Configurations //
         //////////////////////////
@@ -45,7 +41,6 @@ app.config(['$stateProvider', '$urlRouterProvider',
             //////////
             // Home //
             //////////
-
             .state("home", {
 
                 // Use a url of "/" to set a state as the "index".
@@ -59,7 +54,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 template: '<p class="lead">Welcome to the UI-Router Demo</p>' +
                     '<p>Use the menu above to navigate. ' +
                     'Pay attention to the <code>$state</code> and <code>$stateParams</code> values below.</p>' +
-                    '<p>Click these links—<a href="#/c?id=1">Alice</a> or ' +
+                    '<p>Click these links— <a href="#/c?id=1"> Alice</a> or ' +
                     '<a href="#/user/42">Bob</a>—to see a url redirect in action.</p>'
 
             })
@@ -67,10 +62,8 @@ app.config(['$stateProvider', '$urlRouterProvider',
             ///////////
             // About //
             ///////////
-
             .state('about', {
                 url: '/about',
-
                 // Showing off how you could return a promise from templateProvider
                 templateProvider: ['$timeout',
                     function ($timeout) {
@@ -86,5 +79,4 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     }]
             })
     }
-]
-);
+]);

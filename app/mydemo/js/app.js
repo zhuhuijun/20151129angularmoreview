@@ -1,51 +1,28 @@
-var myApp = angular.module('myApp', ['ui.router']);
+var myApp = angular.module('myApp', ['ui.router' , 'ngAnimate']);
+//run
+myApp.run(['$rootScope', '$state', '$stateParams',
+    function ($rootScope, $state, $stateParams) {
+        // It's very handy to add references to $state and $stateParams to the $rootScope
+        // so that you can access them from any scope within your applications.For example,
+        // <li ng-class="{ active: $state.includes('contacts.list') }"> will set the <li>
+        // to active whenever 'contacts.list' or one of its decendents is active.
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams;
+    }]);
 /***
  * 路由的配置及
  */
+
 myApp.config(function ($stateProvider, $urlRouterProvider) {
-    // $urlRouterProvider.otherwise('/contacts');
-    //$urlRouterProvider.when('/index', '/index');
-    $stateProvider
-        .state('contacts', {
-            url: '/contacts',
-            templateUrl: 'pages/contacts.html'
-        })
-        .state('contacts.detail', {
-            views: {
-                // 嵌套状态，对应的父模板是 contacts.html
-
-                // 相对命名
-                // contacts.html 中 <div ui-view='detail'/> 将对应下面
-                "detail": {
-                    templateUrl: 'pages/details.html'
-                },
-
-                // 相对命名
-                // 对应 contacts.html 中的未命名 ui-view <div ui-view/>
-                "": {
-                    templateUrl: 'pages/contacts.details.html'
-                },
-
-                // 绝对命名
-                // 对应 contacts.detail.html 中 <div ui-view='info'/>
-                "info@contacts.detail": { },
-
-                // 绝对命名
-                // 对应 contacts.html 中 <div ui-view='detail'/>
-                "detail@contacts": { },
-
-                // 绝对命名
-                // 对应 contacts.html 中的未命名 ui-view <div ui-view/>
-                "@contacts": { },
-
-                // 绝对命名
-                // 对应 index.html 中 <div ui-view='status'/>
-                "status@": { },
-
-                // 绝对命名
-                // 对应 index.html 中 <div ui-view/>
-                "@": {
-                    templateUrl: '/pages/index.default.html'
-                }
-            }})
+    $urlRouterProvider
+        .when('/c?id', '/contacts/:id')
+        .when('/user/:id', '/contacts/:id')
+        .otherwise('/');
+    $stateProvider.state("home", {
+        url: '/',
+        templateUrl: 'tpls/home.html'
+    }).state('about', {
+            url: '/about',
+            templateUrl: 'tpls/about.html'
+        });
 });
