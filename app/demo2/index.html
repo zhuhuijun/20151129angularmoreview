@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html data-ng-app="myApp">
+<head>
+    <title>my ui router </title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">徽标</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a ui-sref="home">主页 <span class="sr-only">(current)</span></a></li>
+                <li ng-class="{active: $state.includes('contacts')}"><a ui-sref="contacts.list">联系人</a></li>
+                <li><a ui-sref="about">关于</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <!--这是一个有名字的ui-view用来显示当前的导航的路径-->
+            <p ui-view="hint" ></p>
+        </div>
+        <div class="panel-body">
+            <div data-ui-view></div>
+        </div>
+        <div class="panel-footer">
+            <div>
+
+                <p>$state = {{$state.current.name}}</p>
+
+                <p>$stateParams = {{$stateParams}}</p>
+
+                <p> $state full url = {{ $state.$current.url.source }}</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="../lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../lib/angular/angular.min.js"></script>
+<script type="text/javascript" src="../lib/angular-animate/angular-animate.min.js"></script>
+<script type="text/javascript" src="../lib/angular-ui-router/release/angular-ui-router.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/contact.js"></script>
+<script type="text/javascript" src="js/service.js"></script>
+<script type="text/javascript" src="js/common/utils-service.js"></script>
+</html>
